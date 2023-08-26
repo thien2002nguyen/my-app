@@ -6,7 +6,7 @@ function Home(props) {
     const navigate = useNavigate();
 
     const handleOnclick = () => {
-        navigate('/question')
+        navigate('/question');
     }
     return (
         <div className='home'>
