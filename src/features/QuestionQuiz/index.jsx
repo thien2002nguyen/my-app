@@ -14,7 +14,7 @@ function QuestionQuiz(props) {
 
     const navigate = useNavigate();
 
-    const handleOnclick = () => {
+    const handleClickNext = () => {
         return number < 9 ? setNumber(number + 1) : setCongratulation(true);
     }
 
@@ -33,7 +33,7 @@ function QuestionQuiz(props) {
         <div className='question'>
             <TextQuestion number={number} question={listQuestion && listQuestion[number]} />
             <AnswerQuestion number={number} answer={listQuestion && listQuestion[number]} />
-            <button onClick={handleOnclick} className='question--next'>Next</button>
+            <button onClick={handleClickNext} className='question--next'>Next</button>
             {congratulation && <ModalCongratulation setNumber={setNumber} congratulation={setCongratulation} />}
             <div onClick={handleClickCancel} className='cancel'><img src={cancelBtn} alt="" /></div>
         </div>

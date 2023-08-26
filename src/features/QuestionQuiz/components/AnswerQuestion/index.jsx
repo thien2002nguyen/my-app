@@ -1,21 +1,26 @@
 import { useEffect, useState } from "react";
 
-function AnswerQuestion({ number, answer }) {
+function AnswerQuestion({ answer }) {
 
     const [list, setList] = useState();
     const [answerCorrect, setAnswerCorrect] = useState();
-    const [choose, setChoose] = useState(false);
+    const [choose, setChoose] = useState();
     const [showResult, setShowResult] = useState(false);
+    const [checkChoose, setCheckChoose] = useState(true);
 
     useEffect(() => {
         if (answer !== undefined) {
             setList([answer.correct_answer, ...answer.incorrect_answers]);
             setAnswerCorrect(answer.correct_answer);
+            setChoose();
+            setCheckChoose(true);
+            setShowResult(false);
         }
     }, [answer]);
 
-    const handleOnclick = (choose) => {
-        setChoose(choose);
+    const handleOnclick = (numberAnswer) => {
+        setChoose(numberAnswer);
+        setCheckChoose(false);
         setShowResult(true);
     }
 
@@ -24,12 +29,12 @@ function AnswerQuestion({ number, answer }) {
             <div className='question__answer'>
                 {list && list.map((answer, index) => (
                     <button
-                        onClick={() => handleOnclick(index)}
+                        onClick={() => checkChoose && handleOnclick(index)}
                         className={`question__answer--nav ${choose === index ? list[choose] === answerCorrect ? 'correct' : 'choose' : ''}`}
                         key={index}
                     >{answer}</button>
                 ))}
-            </div>
+            </div >
             {showResult && <div className='answer'>Answer: {answerCorrect}</div>}
         </>
 
