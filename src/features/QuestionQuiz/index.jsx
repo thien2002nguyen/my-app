@@ -47,10 +47,11 @@ function QuestionQuiz(props) {
     }, [checkClock, timeAnswer, congratulation])
 
     const handleClickNext = () => {
+        setNext(false);
         return number < 9 ? setNumber(number + 1) : setCongratulation(true);
     }
 
-    const handleNull = () => null;
+    const handleNextNull = () => null;
 
     const handleClickCancel = () => {
         navigate('/');
@@ -73,7 +74,7 @@ function QuestionQuiz(props) {
                 countAnswer={setCount}
                 setCheckClock={setCheckClock}
                 setNext={setNext} />
-            <button onClick={next ? handleClickNext : handleNull} className='question--next'>Next</button>
+            <button onClick={next ? handleClickNext : handleNextNull} className='question--next'>Next</button>
             {congratulation && <ModalCongratulation
                 setNumber={setNumber}
                 congratulation={setCongratulation}
