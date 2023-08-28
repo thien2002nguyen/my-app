@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './style.scss'
 import imgCongratulation from '../assets/images/congratulation.png'
 
@@ -40,4 +40,4 @@ function ModalCongratulation({
     );
 }
 
-export default ModalCongratulation;
+export default memo(ModalCongratulation);
