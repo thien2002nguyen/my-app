@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 function AnswerQuestion({ number, answer, countAnswer, setCheckClock, setNext }) {
 
@@ -62,4 +62,4 @@ function AnswerQuestion({ number, answer, countAnswer, setCheckClock, setNext })
     );
 }
 
-export default AnswerQuestion;
+export default memo(AnswerQuestion);

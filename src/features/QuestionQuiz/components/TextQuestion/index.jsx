@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 function TextQuestion({ number, question }) {
 
@@ -10,4 +10,4 @@ function TextQuestion({ number, question }) {
     );
 }
 
-export default TextQuestion;
+export default memo(TextQuestion);
