@@ -47,16 +47,35 @@ function QuestionQuiz(props) {
     }, [checkClock, timeAnswer, congratulation])
 
     const handleClickNext = () => {
-        setNext(false);
         return number < 9 ? setNumber(number + 1) : setCongratulation(true);
     }
-
-    const handleNextNull = () => null;
 
     const handleClickCancel = () => {
         navigate('/');
     }
 
+    const countAnswerCorrect = () => {
+        setCount(prev => prev + 1);
+    }
+
+    const handleTurnOnClock = () => {
+        setCheckClock(true);
+    }
+
+    const clickAnswer = () => {
+        setNext(true);
+    }
+
+    const handleCloseModal = () => {
+        setNumber(0);
+        setCount(0);
+        setCongratulation(false);
+        setTimeAnswer(60);
+    }
+
+    useEffect(() => {
+        setNext(false);
+    }, [number])
     return (
         <div className='question'>
             <div className='clock'>
@@ -71,17 +90,14 @@ function QuestionQuiz(props) {
             <AnswerQuestion
                 number={number}
                 answer={listQuestion && listQuestion[number]}
-                countAnswer={setCount}
-                setCheckClock={setCheckClock}
-                setNext={setNext} />
-            <button onClick={next ? handleClickNext : handleNextNull} className='question--next'>Next</button>
+                countAnswerCorrect={countAnswerCorrect}
+                onTurnOnClock={handleTurnOnClock}
+                clickAnswer={clickAnswer} />
+            <button onClick={handleClickNext} className={next ? 'btn-next next' : 'btn-next disable-next'}>Next</button>
             {congratulation && <ModalCongratulation
-                setNumber={setNumber}
-                congratulation={setCongratulation}
                 answerCorrect={count}
-                setAnswerCorrect={setCount}
-                setTimeAnswer={setTimeAnswer}
-                timeOut={timeOut} />}
+                timeOut={timeOut}
+                handleCloseModal={handleCloseModal} />}
             <div onClick={handleClickCancel} className='cancel'><img src={cancelBtn} alt="" /></div>
         </div>
     );

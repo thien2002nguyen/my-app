@@ -99,8 +99,7 @@
             }
         }
     }
-
-    &--next {
+    .btn-next {
         margin-top: 50px;
         padding: 20px 40px;
         background: rgb(255, 0, 0);
@@ -109,11 +108,17 @@
         border-radius: 5px;
         font-size: 18px;
         font-family: "Trebuchet MS", sans-serif;
-        cursor: pointer;
         &:hover {
             background: rgb(255, 70, 70);
         }
         transition: all 0.25s;
+        &.next {
+            cursor: pointer;
+        }
+        &.disable-next {
+            opacity: 0.5;
+            pointer-events: none;
+        }
     }
 
     .cancel {

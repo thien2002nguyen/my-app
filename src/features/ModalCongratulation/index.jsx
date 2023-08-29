@@ -1,21 +1,15 @@
 import React, { memo } from 'react';
-import './style.scss'
-import imgCongratulation from '../assets/images/congratulation.png'
+import imgCongratulation from '../assets/images/congratulation.png';
+import './style.scss';
 
 function ModalCongratulation({
-    setNumber,
-    congratulation,
     answerCorrect,
-    setAnswerCorrect,
-    setTimeAnswer,
-    timeOut
+    timeOut,
+    handleCloseModal
 }) {
 
     const handleClickPlayAgain = () => {
-        setNumber(0);
-        setAnswerCorrect(0);
-        congratulation(false);
-        setTimeAnswer(60);
+        handleCloseModal();
     }
 
     return (
