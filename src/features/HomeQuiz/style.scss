@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    user-select: none;
+    -webkit-user-select: none;
     .home {
         background-image: url("../assets/images/home.jpg");
         width: 100%;
